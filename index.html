@@ -4,14 +4,74 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>Bangkok Web Survey</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/ico_16px.png">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div id="login-page">
+      <div class="login-box">
+        <img src="assets/images/login_logo@2x.png" alt="Bangkok Web Survey">
+        <form>
+          <fieldset class="form-group">
+            <input type="email" class="form-control" id="username" placeholder="ชื่อผู้ใช้งาน">
+          </fieldset>
+          <fieldset class="form-group">
+            <input type="password" class="form-control bkk-wa-password" id="password" placeholder="รหัสผ่าน" value="test">
+            <ion-icon name="eye-sharp"></ion-icon>
+          </fieldset>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
+          <!-- For use -->
+          <button type="submit" class="btn btn-primary" style="display: none;">เข้าสู่ระบบ</button>
+
+          <!-- For test -->
+          <a href="survey.html" class="btn btn-primary">เข้าสู่ระบบ</a>
+        </form>
+        <button type="button" id="forgetpassword" class="btn btn-link" data-toggle="modal" data-target="#forgetpasswordModal">ลืมรหัสผ่าน</button>
+      </div>
+    </div>
+
+    <!-- Modal forgetpassword -->
+    <div class="modal fade" id="forgetpasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgetpasswordTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="forgetpasswordLongTitle">ลืมรหัสผ่าน</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="form-group col-xs-12 col-sm-12 col-md-6">
+                    <label for="email" class="control-label">อีเมล</label>
+                    <input type="email" class="form-control" id="forgetpassword-email" placeholder="กรุณากรอกอีเมล" value="">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
+            <button type="button" class="btn btn-primary">ส่ง</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>

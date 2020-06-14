@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Bangkok Web Survey</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/ico_16px.png">
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <!-- s -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div id="survey-page">
+      <div class="nav nav-top">
+        <a class="navbar-brand" href="#">
+          <img src="assets/images/header_logo@2x.png" alt="Bangkok Web Admin" class="logo">
+        </a>
+
+        <div class="nav-item dropdown ml-auto">
+          <div class="nav-profile">
+            <b>Administrator</b>
+            <p>โหมดผู้ใช้งาน</p>
+          </div>
+
+          <a class="nav-link navbar-toggler dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="icon-bar top-bar"></span>
+          	<span class="icon-bar middle-bar"></span>
+          	<span class="icon-bar bottom-bar"></span>
+          </a>
+          <div class="dropdown-menu ml-auto">
+            <ul class="nav nav-left nav-pills" id="pills-navleft-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html" ><ion-icon name="log-out-outline"></ion-icon> ออกจากระบบ</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-left">
+        <ul class="nav nav-left nav-pills" id="pills-navleft-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="pills-first-tab" data-toggle="pill" href="#pills-first" role="tab" aria-controls="pills-first" aria-selected="false">
+              <ion-icon name="search-sharp"></ion-icon> งานสำรวจ
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-second-tab" data-toggle="pill" href="#pills-second" role="tab" aria-controls="pills-second" aria-selected="false">
+              <ion-icon name="reader-sharp"></ion-icon> รายงาน
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column Right -->
+      <div class="col-right">
+        <div class="map-control">
+          <div id="map"></div>
+
+          <div class="layers-control">
+            <a class="layers-control-button nav-link" data-button="first" href="#" role="button" >
+              <i class="icon icon-setting"></i>
+            </a>
+            <div class="layers-control-menu _first dropdown-menu">
+              <a class="layers-control-button dropdown-item" data-button="second" data-name="maptype" href="#" role="button"><ion-icon name="layers-outline"></ion-icon> Map Type</a>
+              <div class="layers-control-menu _second dropdown-menu" id="maptype">
+                <a class="layers-control-item dropdown-item" href="#">Default</a>
+                <a class="layers-control-item dropdown-item" href="#">Satellite</a>
+                <a class="layers-control-item dropdown-item" href="#">Terrain</a>
+              </div>
+              <a class="layers-control-button dropdown-item" data-button="second" data-name="grid" href="#" role="button">Grid</a>
+              <div class="layers-control-menu _second dropdown-menu" id="grid">
+                <a class="layers-control-item dropdown-item" href="#">1 : 50,000</a>
+                <a class="layers-control-item dropdown-item" href="#">1 : 4,000</a>
+                <a class="layers-control-item dropdown-item" href="#">1 : 1,000</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-side full-height">
+          <button type="button" name="button" class="close">X</button>
+        </div>
+
+        <div class="tab-content" id="pills-tabContent">
+            <!-- Tab content - first -->
+            <div class="tab-pane fade" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">
+
+
+              <div class="left-side full-height">
+                <div class="search-box">
+                  <div class="search-header">
+                    <h3>ค้นหา</h3>
+                    <button type="button" class="search-form-button" data-toggle="collapse" data-target="#search-form" aria-expanded="false" aria-controls="search-form">
+                      <ion-icon name="caret-down-sharp"></ion-icon>
+                    </button>
+                  </div>
+                  <div class="collapse" id="search-form">
+                    <div class="search-form">
+                      <form>
+                        <div class="form-group">
+                          <label for="keyword">ค้นหาด้วยคำสำคัญ</label>
+                          <input type="text" class="form-control" id="keyword" placeholder="กรุณากรอกคำที่ต้องการค้นหา">
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="company">บริษัท</label>
+                            <select id="company" class="form-control">
+                              <option selected>กรุณาเลือกบริษัท</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="surveyName">ชื่อผู้สำรวจ</label>
+                            <select id="surveyName" class="form-control">
+                              <option selected>กรุณาเลือก</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="company">เขต</label>
+                            <select id="company" class="form-control">
+                              <option selected>กรุณาเลือก</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="surveyName">แขวง</label>
+                            <select id="surveyName" class="form-control">
+                              <option selected>กรุณาเลือก</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="gridCheck">ขนาดกริด</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck1">
+                              <label class="form-check-label" for="gridCheck">
+                                1 : 50,000
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="gridCheck">&nbsp;</label>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck2">
+                              <label class="form-check-label" for="gridCheck">
+                                1 : 40,000
+                              </label>
+                            </div>
+                          </div>
+                          <div class="form-group col-md-12">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" id="gridCheck3">
+                              <label class="form-check-label" for="gridCheck">
+                                1 : 1,000
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-lg btn-block">ค้นหา</button>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="search-result">
+                    <h3>ผลการค้นหา</h3>
+                    <span>พบ 2,000,000 รายการ</span>
+                    <div class="search-result-table">
+                      <table class="table table-inverse|reflow|striped|bordered|hover|sm">
+                        <thead>
+                          <tr class="table-active">
+                            <th>รหัสกริด</th>
+                            <th>เขตพื้นที่</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>503614632</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614633</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614634</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614635</td>
+                            <td>สวนดอกไม้</td>
+                          </tr><tr>
+                            <td>503614632</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614633</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614634</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614635</td>
+                            <td>สวนดอกไม้</td>
+                          </tr><tr>
+                            <td>503614632</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614633</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614634</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614635</td>
+                            <td>สวนดอกไม้</td>
+                          </tr><tr>
+                            <td>503614632</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614633</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614634</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614635</td>
+                            <td>สวนดอกไม้</td>
+                          </tr><tr>
+                            <td>503614632</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614633</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614634</td>
+                            <td>ประเวศ</td>
+                          </tr>
+                          <tr>
+                            <td>503614635</td>
+                            <td>สวนดอกไม้</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div class="search-pagination">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <ion-icon name="play-skip-back-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Back">
+                            <ion-icon name="caret-back-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Back</span>
+                          </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <ion-icon name="play-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Forward">
+                            <ion-icon name="play-skip-forward-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Forward</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Tab content - second -->
+            <div class="container tab-pane fade full-height" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
+              <!-- Table - Header -->
+              <div class="header">
+                <h3>จัดการกลุ่ม</h3>
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addGroupModal">
+                  <ion-icon name="add-sharp"></ion-icon> เพิ่มกลุ่ม
+                </button>
+              </div>
+              <!-- Table -->
+              <div class="table-responsive">
+                <!-- Table Nav -->
+                <div class="table-nav navbar navbar-expand-lg navbar-light">
+                  <h5>รายการกลุ่ม</h5>
+                  <div class="table-nav-search">
+                    <form class="form-inline my-2 my-lg-0">
+                      <ion-icon name="search-sharp"></ion-icon>
+                      <input class="form-control" type="search" placeholder="กรอกคำที่ต้องการค้นหา" aria-label="Search">
+                    </form>
+                  </div>
+                </div>
+
+                <!-- Table Group -->
+                <div class="" style="width: 100%; overflow: scroll;">
+                  <table class="table table-inverse|reflow|striped|bordered|hover|sm">
+                    <thead>
+                      <tr>
+                        <th>ที่ <ion-icon name="caret-down-sharp"></ion-icon></th>
+                        <th>ชื่อกลุ่ม <ion-icon name="caret-down-sharp"></ion-icon></th>
+                        <th>สังกัดพื้นที่ <ion-icon name="caret-down-sharp"></ion-icon></th>
+                        <th>จำนวนเจ้าหน้าที่ <ion-icon name="caret-down-sharp"></ion-icon></th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>บริษัทเอ</td>
+                        <td>สวนหลวง</td>
+                        <td>40</td>
+                        </td>
+                        <td>
+                          <button class="btn btn-link" data-toggle="modal" data-target="#editGroupModal">
+                            <ion-icon name="pencil-sharp"></ion-icon> แก้ไขข้อมูล
+                          </button>
+                        </td>
+                        <td>
+                          <button class="btn btn-link" data-toggle="modal" data-target="#deleteGroupModal">
+                            <ion-icon name="trash-sharp"></ion-icon> ลบผู้ใช้งาน
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>บริษัทบี</td>
+                        <td>ประเวศ</td>
+                        <td>50</td>
+                        </td>
+                        <td>
+                          <button class="btn btn-link" data-toggle="modal" data-target="#editGroupModal">
+                            <ion-icon name="pencil-sharp"></ion-icon> แก้ไขข้อมูล
+                          </button>
+                        </td>
+                        <td>
+                          <button class="btn btn-link" data-toggle="modal" data-target="#deleteGroupModal">
+                            <ion-icon name="trash-sharp"></ion-icon> ลบผู้ใช้งาน
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>บริษัทซี</td>
+                        <td>ลาดกระบัง</td>
+                        <td>60</td>
+                        <td>
+                          <button class="btn btn-link" data-toggle="modal" data-target="#editGroupModal">
+                            <ion-icon name="pencil-sharp"></ion-icon> แก้ไขข้อมูล
+                          </button>
+                        </td>
+                        <td>
+                          <button class="btn btn-link" data-toggle="modal" data-target="#deleteGroupModal">
+                            <ion-icon name="trash-sharp"></ion-icon> ลบผู้ใช้งาน
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Table Pagination -->
+                <div aria-label="Page navigation">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true"><ion-icon name="play-skip-back-sharp"></ion-icon></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true"><ion-icon name="caret-back-sharp"></ion-icon></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true"><ion-icon name="caret-forward-sharp"></ion-icon></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true"><ion-icon name="play-skip-forward-sharp"></ion-icon></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Modal changpassword -->
+    <div class="modal fade" id="changepasswordModal" tabindex="-1" role="dialog" aria-labelledby="changpasswordTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="changpasswordLongTitle">เปลี่ยนรหัสผ่าน</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="form-group col-xs-12 col-sm-12 col-md-6">
+                    <label for="email" class="control-label">รหัสผ่านเดิม</label>
+                    <input type="password" class="form-control" id="oldpassword" placeholder="กรุณากรอก" value="">
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-6">
+                    <label for="email" class="control-label">รหัสผ่านใหม่</label>
+                    <input type="password" class="form-control" id="newpassword" placeholder="กรุณากรอก" value="">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
+            <button type="button" class="btn btn-primary">ยืนยัน</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <!-- /* Leaflet Map ********************************/ -->
+    <script>
+    	var cities = L.layerGroup();
+
+    	L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
+    	L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
+    	L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
+    	L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+
+
+    	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+    	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
+    		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+
+    	var map = L.map('map', {
+    		center: [13.982227, 100.550900],
+    		zoom: 6,
+    		layers: [grayscale, cities]
+    	});
+
+    	var baseLayers = {
+    		"Grayscale": grayscale,
+    		"Streets": streets
+    	};
+
+    	var overlays = {
+    		"Cities": cities
+    	};
+
+    	L.control.layers(baseLayers).addTo(map);
+    </script>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
