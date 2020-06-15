@@ -43,6 +43,8 @@ $(function() {
         function(){
           $('#'+idTab).removeClass('active').attr('aria-selected', 'false');
           $('#'+idTabContent).fadeOut('100').removeClass('show');
+          $('.right-side').removeClass('active');
+          $('.map-control').animate({width: $('.col-right').width()},100);
           // $('#pills-zero-tab').trigger('click');
         },1
       );
@@ -51,42 +53,56 @@ $(function() {
     }
 
     checkHeight();
-    checkHeightSearchResult();
+    checkHeightResultLeftside();
   });
 
 
   // Search Button /////////////////////////////
   $('#search-form').on('shown.bs.collapse', function () {
-    checkHeightSearchResult();
+    checkHeightResultLeftside();
   }).on('hide.bs.collapse', function() {
-    checkHeightSearchResultFull();
+    checkHeightResultLeftsideFull();
   });
 
-  function checkHeightSearchResult () {
+  function checkHeightResultLeftside () {
     var leftSideH = window.innerHeight - 50,
-        searchHeaderH = $('.search-header').height(),
-        searchFormH = $('.search-form').height(),
+        searchHeaderH = $('.left-side .search-header').height(),
+        searchFormH = $('.left-side .search-form').height(),
         searchResultH = leftSideH - (searchHeaderH + searchFormH + 190);
-        console.log(leftSideH+' , '+searchHeaderH+' , '+searchFormH+' , '+searchResultH);
+        // console.log(leftSideH+' , '+searchHeaderH+' , '+searchFormH+' , '+searchResultH);
 
-    $('.search-result-table').animate({height: searchResultH}, 50);
+    $('.left-side .result-table-body').animate({height: searchResultH}, 50);
   }
 
-  function checkHeightSearchResultFull () {
+  function checkHeightResultLeftsideFull () {
     var leftSideH = window.innerHeight - 50,
-        searchHeaderH = $('.search-header').height(),
+        searchHeaderH = $('.left-side .search-header').height(),
         searchResultH = leftSideH - (searchHeaderH + 150);
+        console.log('left full');
 
-    $('.search-result-table').animate({ height: searchResultH}, 50);
+    $('.left-side .result-table-body').animate({ height: searchResultH}, 50);
+  }
+
+  function checkHeightResultRightsideFull () {
+    var leftSideH = window.innerHeight - 50,
+        headerH = $('.right-side .result-header').height(),
+        detailH = $('.right-side .result-detail').height(),
+        resultH = leftSideH - (headerH + detailH + 190);
+        // console.log(leftSideH+' , '+headerH+' , '+detailH+' , '+resultH);
+        console.log('right full')
+
+    $('.right-side .result-table-body').animate({height: resultH}, 50);
   }
 
 
   // Right Side ////////////////////////////////
-  $('.search-result-table tr').on('click', function() {
+  $('.left-side .result-table tr').on('click', function() {
     $('.right-side').addClass('active');
 
     var colRightH = $('.col-right').width();
     $('.map-control').animate({width: colRightH - 290 },100);
+
+    checkHeightResultRightsideFull();
   });
 
   $('.right-side .close').on('click', function() {
@@ -129,7 +145,7 @@ $(function() {
   // Check checkMapHeight //////////////////////
   function checkHeight () {
     var winH = window.innerHeight;
-    $('#mapid, .full-height').css({
+    $('#map, .full-height').css({
       height: winH - 50
     });
   };
@@ -137,11 +153,27 @@ $(function() {
   checkHeight();
 
 
+  // Check checkMapWidth ///////////////////////
+  function checkColRightWidth () {
+    var winW = window.innerWidth;
+    var colLeftW = $('.col-left').width();
+
+    $('.col-right').css({
+      width: winW - colLeftW
+    });
+  }
+
+  checkColRightWidth();
+
+
   // Window Resize /////////////////////////////
   $( window ).resize(function() {
     checkHeight();
-    checkHeightSearchResult();
-    checkHeightSearchResultFull();
+
+    var searchForm = $('#search-form');
+    (searchForm.hasClass('show')) ? checkHeightResultLeftside() : checkHeightResultLeftsideFull();
+
+    checkHeightResultRightsideFull();
   });
 
 });
