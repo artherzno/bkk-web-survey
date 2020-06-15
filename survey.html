@@ -88,7 +88,40 @@
         </div>
 
         <div class="right-side full-height">
-          <button type="button" name="button" class="close">X</button>
+          <div class="result-box">
+            <div class="result-header">
+              <h3>Grid ID : 503614634</h3>
+              <button type="button" class="close">
+                <ion-icon name="close-sharp"></ion-icon>
+              </button>
+            </div>
+            <div class="result-detail">
+                <p>พื้นที่ : เขตประเวศ, แขวงประเวศ, กรุงเทพมหานคร</p>
+                <p>งานที่สำเร็จ : 25/100 (25%)</p>
+            </div>
+            <div class="result-tab">
+              <!-- <ul class="nav nav-left nav-pills" id="pills-result-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-result-first-tab" data-toggle="pill" href="#pills-result-first" role="tab" aria-controls="pills-result-first" aria-selected="true">
+                    <ion-icon name="search-sharp"></ion-icon> งานสำรวจ
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-result-second-tab" data-toggle="pill" href="#pills-result-second" role="tab" aria-controls="pills-result-second" aria-selected="false">
+                    <ion-icon name="reader-sharp"></ion-icon> รายงาน
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content" id="pills-tabResult">
+                <div class="tab-pane fade active" id="pills-result-first" role="tabpanel" aria-labelledby="pills-result-first-tab">
+                  First
+                </div>
+                <div class="tab-pane fade" id="pills-result-second" role="tabpanel" aria-labelledby="pills-result-second-tab">
+                  Second
+                </div>
+              </div> -->
+            </div>
+          </div>
         </div>
 
         <div class="tab-content" id="pills-tabContent">
@@ -178,14 +211,18 @@
                   <div class="search-result">
                     <h3>ผลการค้นหา</h3>
                     <span>พบ 2,000,000 รายการ</span>
-                    <div class="search-result-table">
-                      <table class="table table-inverse|reflow|striped|bordered|hover|sm">
+                    <div class="search-result-table-head">
+                      <table class="table">
                         <thead>
                           <tr class="table-active">
                             <th>รหัสกริด</th>
                             <th>เขตพื้นที่</th>
                           </tr>
                         </thead>
+                      </table>
+                    </div>
+                    <div class="search-result-table">
+                      <table class="table">
                         <tbody>
                           <tr>
                             <td>503614632</td>

@@ -57,25 +57,25 @@ $(function() {
 
   // Search Button /////////////////////////////
   $('#search-form').on('shown.bs.collapse', function () {
-    checkHeightSearchResultFull();
-  }).on('hide.bs.collapse', function() {
     checkHeightSearchResult();
+  }).on('hide.bs.collapse', function() {
+    checkHeightSearchResultFull();
   });
 
-  function checkHeightSearchResultFull () {
+  function checkHeightSearchResult () {
     var leftSideH = window.innerHeight - 50,
         searchHeaderH = $('.search-header').height(),
         searchFormH = $('.search-form').height(),
-        searchResultH = leftSideH - (searchHeaderH + searchFormH + 140);
+        searchResultH = leftSideH - (searchHeaderH + searchFormH + 190);
         console.log(leftSideH+' , '+searchHeaderH+' , '+searchFormH+' , '+searchResultH);
 
     $('.search-result-table').animate({height: searchResultH}, 50);
   }
 
-  function checkHeightSearchResult () {
+  function checkHeightSearchResultFull () {
     var leftSideH = window.innerHeight - 50,
         searchHeaderH = $('.search-header').height(),
-        searchResultH = leftSideH - (searchHeaderH + 100);
+        searchResultH = leftSideH - (searchHeaderH + 150);
 
     $('.search-result-table').animate({ height: searchResultH}, 50);
   }
