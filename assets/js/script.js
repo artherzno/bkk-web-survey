@@ -178,24 +178,24 @@ $(function() {
 
 
   // Portal Button /////////////////////////////
-  $('#portal-search-button').on('click', function(){
-    sessionStorage.setItem("tab", "first");
-  });
-
-  $('#portal-check-button').on('click', function(){
-    sessionStorage.setItem("tab", "second");
-  });
-
-  $('#portal-report-button').on('click', function(){
-    sessionStorage.setItem("tab", "third");
-  });
-
-  setTimeout(function(){
-    // console.log(sessionStorage.getItem("tab"));
-    var ss = sessionStorage.getItem("tab");
-    $('#pills-'+ss+'-tab').addClass('active');
-    $('#pills-'+ss).tab('show');
-  },100);
+  // $('#portal-search-button').on('click', function(){
+  //   sessionStorage.setItem("tab", "first");
+  // });
+  //
+  // $('#portal-check-button').on('click', function(){
+  //   sessionStorage.setItem("tab", "second");
+  // });
+  //
+  // $('#portal-report-button').on('click', function(){
+  //   sessionStorage.setItem("tab", "third");
+  // });
+  //
+  // setTimeout(function(){
+  //   // console.log(sessionStorage.getItem("tab"));
+  //   var ss = sessionStorage.getItem("tab");
+  //   $('#pills-'+ss+'-tab').addClass('active');
+  //   $('#pills-'+ss).tab('show');
+  // },100);
 
 
 });
