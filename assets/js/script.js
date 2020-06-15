@@ -78,7 +78,7 @@ $(function() {
     var leftSideH = window.innerHeight - 50,
         searchHeaderH = $('.left-side .search-header').height(),
         searchResultH = leftSideH - (searchHeaderH + 150);
-        console.log('left full');
+        // console.log('left full');
 
     $('.left-side .result-table-body').animate({ height: searchResultH}, 50);
   }
@@ -89,7 +89,7 @@ $(function() {
         detailH = $('.right-side .result-detail').height(),
         resultH = leftSideH - (headerH + detailH + 190);
         // console.log(leftSideH+' , '+headerH+' , '+detailH+' , '+resultH);
-        console.log('right full')
+        // console.log('right full')
 
     $('.right-side .result-table-body').animate({height: resultH}, 50);
   }
@@ -175,5 +175,27 @@ $(function() {
 
     checkHeightResultRightsideFull();
   });
+
+
+  // Portal Button /////////////////////////////
+  $('#portal-search-button').on('click', function(){
+    sessionStorage.setItem("tab", "first");
+  });
+
+  $('#portal-check-button').on('click', function(){
+    sessionStorage.setItem("tab", "second");
+  });
+
+  $('#portal-report-button').on('click', function(){
+    sessionStorage.setItem("tab", "third");
+  });
+
+  setTimeout(function(){
+    // console.log(sessionStorage.getItem("tab"));
+    var ss = sessionStorage.getItem("tab");
+    $('#pills-'+ss+'-tab').addClass('active');
+    $('#pills-'+ss).tab('show');
+  },100);
+
 
 });

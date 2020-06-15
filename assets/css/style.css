@@ -19,6 +19,7 @@
 
 /* ========= Core ================= */
 html, body { width: 100%; height: 100%; font-size: 14px; background-color: #ececec; font-family: 'thonburi'; color: #4a4a4a; }
+a.btn { line-height: 1.8; }
 
 .nav { background: #299650 url('../images/bg-login.jpg') no-repeat top left; background-size: cover; width: 100%; height: 50px; position: fixed; top: 0; left: 0; z-index: 10; }
 .nav .navbar-brand { padding-bottom: 5px; margin-left: 10px; margin-right: 10px; }
@@ -145,6 +146,12 @@ textarea.form-control { border-radius: 0; border: 1px solid #e0e0e0; padding: 4p
 #login-page .login-box .btn { width: 100%; max-width: 250px; height: 40px; margin: 16px auto 0; }
 #login-page .login-box #forgetpassword { color: #ffffff; margin-top: 15px; display: block; }
 
+/* ========= Portal Page ===========*/
+#portal-page { background: #299650 url('../images/bg_login@2x.png') no-repeat center; background-size: cover; width: 100%; height: 100%; position: relative; }
+#portal-page .portal-box { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; width: 60%; height: 50%; text-align: center; }
+#portal-page .portal-box img { margin-bottom: 30px; max-width: 240px; }
+#portal-page .portal-box .btn { width: 30%; min-width: 200px; height: 40px; margin: 16px auto 0; }
+
 /* ========= Survey Page ===========*/
 .col-left { width: 90px; max-width: 260px; height: 100vh; background-color: #128339; float: left; padding-top: 50px; }
 .col-left .nav.nav-left .nav-item .nav-link { text-align: center; padding: 36px 0; }
@@ -185,14 +192,21 @@ textarea.form-control { border-radius: 0; border: 1px solid #e0e0e0; padding: 4p
 .result-table  table tbody tr { cursor: pointer; }
 .result-table  table thead tr th,
 .result-table  table tbody tr td { min-width: 120px; text-align: center; }
+.result-table  table i { width: 18px; height: 18px; vertical-align: bottom; }
 
 .result-pagination { position: absolute;; bottom: 0; left: 0; width: 100%; background-color: #ffffff; padding: 15px 20px; }
 .result-pagination nav { overflow: hidden; }
 .result-pagination nav ul { float: none; margin: 0 auto; }
 
+.surveying { color: #63be00; }
+.explored { color: #4A90E2; }
+.not-explored { color: #d31228; }
+
 /* ========= Icon ==================*/
 i.icon { display: inline-block; background-size: cover; }
 i.icon-setting { background-image: url('../images/ic_setting@2x.png'); }
+i.icon-land { background-image: url('../images/ic_land@2x.png'); }
+i.icon-building { background-image: url('../images/ic_building@2x.png'); }
 
 /* ========= Survey Page ===========*/
 #map { height: 94.8vh; z-index: 1; position: relative; }
