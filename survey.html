@@ -76,7 +76,7 @@
                 <a class="layers-control-item dropdown-item" href="#"><i class="icon icon-map-satellite"></i> Satellite</a>
                 <a class="layers-control-item dropdown-item" href="#"><i class="icon icon-map-terrain"></i> Terrain</a>
               </div>
-              <a class="layers-control-button dropdown-item" data-button="second" data-name="grid" href="#" role="button"><i class="icon icon-map-grid"></i>Grid</a>
+              <a class="layers-control-button dropdown-item" data-button="second" data-name="grid" href="#" role="button"><i class="icon icon-map-grid"></i> Grid</a>
               <div class="layers-control-menu _second dropdown-menu" id="grid">
                 <a class="layers-control-item dropdown-item" href="#">1 : 50,000</a>
                 <a class="layers-control-item dropdown-item" href="#">1 : 4,000</a>
@@ -96,11 +96,11 @@
               </button>
             </div>
             <div class="result-detail">
-                <p>พื้นที่ : เขตประเวศ, แขวงประเวศ, กรุงเทพมหานคร</p>
-                <p>งานที่สำเร็จ : 25/100 (25%)</p>
+                <p><b>พื้นที่ : </b>เขตประเวศ, แขวงประเวศ, กรุงเทพมหานคร</p>
+                <p><b>งานที่สำเร็จ : </b>25/100 (25%)</p>
             </div>
             <div class="result-tab">
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <ul class="nav nav-tabs" id="right-side-tab" role="tablist">
                 <li class="nav-item">
                   <a class="nav-link active" id="home-tab-button" data-toggle="tab" href="#report-tab" role="tab" aria-controls="report-tab" aria-selected="true">รายการงานสำรวจ </a>
                 </li>
@@ -238,16 +238,488 @@
                     </nav>
                   </div>
                 </div>
-                <div class="tab-pane fade" id="explorer-tab" role="tabpanel" aria-labelledby="explorer-tab">..2.</div>
+                <div class="tab-pane fade" id="explorer-tab" role="tabpanel" aria-labelledby="explorer-tab">
+                  <div class="explorer-tab-info">
+                    <form action="">
+                      <h3>ผู้สำรวจปัจจุบัน</h3>
+                      <div class="form-group row">
+                        <label for="colFormLabelSm" class="col-form-label-sm">ชื่อ-สกุล :</label>
+                        <input type="text" class="form-control form-control-sm" id="explorer-name" value="สมชาย  จิตอาสา" disabled>
+                      </div>
+                      <div class="form-group row">
+                        <label for="colFormLabelSm" class="col-form-label-sm">สังกัด :</label>
+                        <input type="text" class="form-control form-control-sm" id="explorer-company" value="บริษัทเมโทร" disabled>
+                      </div>
+                      <div class="form-group row">
+                        <label for="colFormLabelSm" class="col-form-label-sm">พื้นที่สำรวจ :</label>
+                          <input type="text" class="form-control form-control-sm" id="explorer-area" value="เขตประเวศ" disabled>
+                      </div>
+                      <div class="form-group row">
+                        <label for="colFormLabelSm" class="col-form-label-sm">งานที่สำเร็จ :</label>
+                        <input type="text" class="form-control form-control-sm" id="explorer-job" value="5 รายการ" disabled>
+                      </div>
+                      <button type="button" class="btn btn-primary btn-lg btn-block" id="explored-info-assign-button">จ่ายงาน</button>
+                      <button type="button" class="btn btn-primary btn-lg btn-block active" id="explored-info-cancel-button" data-toggle="modal" data-target="#explored-info-cancel-modal">เรียกงานกลับ</button>
+                    </form>
+                  </div>
+
+                  <!-- Result table -->
+                  <div class="result-table">
+                    <h3>ประวัติผู้สำรวจ</h3>
+                    <div class="result-table-head">
+                      <table class="table">
+                        <thead>
+                          <tr class="table-active">
+                            <th>ชื่อ - นามสกุล</th>
+                            <th>งานที่สำเร็จ</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                    <div class="result-table-body">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>กวิน คงรักษา</td>
+                            <td>5 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>กวิน คงรักษา</td>
+                            <td>2 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมชาย จิตอาสา</td>
+                            <td>3 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมคิด ยืนยง</td>
+                            <td>4 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมัคร พิจิตร</td>
+                            <td>5 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>กวิน คงรักษา</td>
+                            <td>7 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>กวิน คงรักษา</td>
+                            <td>2 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมชาย จิตอาสา</td>
+                            <td>4 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมคิด ยืนยง</td>
+                            <td>5 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมัคร พิจิตร</td>
+                            <td>1 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>กวิน คงรักษา</td>
+                            <td>6 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>กวิน คงรักษา</td>
+                            <td>3 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมชาย จิตอาสา</td>
+                            <td>2 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมชาย จิตอาสา</td>
+                            <td>3 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมคิด ยืนยง</td>
+                            <td>4 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมัคร พิจิตร</td>
+                            <td>5 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>กวิน คงรักษา</td>
+                            <td>7 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมชาย จิตอาสา</td>
+                            <td>4 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมคิด ยืนยง</td>
+                            <td>5 รายการ</td>
+                          </tr>
+                          <tr>
+                            <td>สมัคร พิจิตร</td>
+                            <td>1 รายการ</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <!-- Result pagination -->
+                  <div class="result-pagination">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <ion-icon name="play-skip-back-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Back">
+                            <ion-icon name="caret-back-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Back</span>
+                          </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <ion-icon name="play-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Forward">
+                            <ion-icon name="play-skip-forward-sharp" aria-hidden="true"></ion-icon>
+                            <span class="sr-only">Forward</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Tab Content -->
+        <!-- Right sub side -->
+        <div class="right-sub-side full-height">
+          <div class="result-box">
+            <div class="result-header">
+              <h3>ทีมสำรวจ</h3>
+              <span>จำนวน 10/100 คน</span>
+            </div>
+
+            <div class="result-detail">
+              <!-- Result table -->
+              <div class="result-table">
+                <div class="result-table-head">
+                  <table class="table">
+                    <thead>
+                      <tr class="table-active">
+                        <th>ชื่อ-นามสกุล</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div class="result-table-body">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมคิด ยืนยง
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมัคร พิจิตร
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมคิด ยืนยง
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมัคร พิจิตร
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมคิด ยืนยง
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมัคร พิจิตร
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมคิด ยืนยง
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมัคร พิจิตร
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">กวิน คงรักษา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมคิด ยืนยง
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมัคร พิจิตร
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label class="radio-button">สมชาย จิตอาสา
+                            <input type="radio" name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Result pagination -->
+              <div class="result-pagination">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <ion-icon name="play-skip-back-sharp" aria-hidden="true"></ion-icon>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Back">
+                        <ion-icon name="caret-back-sharp" aria-hidden="true"></ion-icon>
+                        <span class="sr-only">Back</span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <ion-icon name="play-sharp" aria-hidden="true"></ion-icon>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Forward">
+                        <ion-icon name="play-skip-forward-sharp" aria-hidden="true"></ion-icon>
+                        <span class="sr-only">Forward</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Result footer -->
+            <div class="result-footer col text-center">
+              <button class="btn btn-dark">ยกเลิก</button>
+              <button class="btn btn-primary">ยืนยัน</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Content (Search Tab & Report Tab) -->
         <div class="tab-content" id="pills-tabContent">
 
-            <!-- Tab content - first -->
+            <!-- Tab content - first (Search Tab) -->
             <div class="tab-pane fade" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">
 
               <!-- Left side -->
@@ -284,20 +756,30 @@
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="company">เขต</label>
-                            <select id="company" class="form-control">
+                            <label for="address1">เขต</label>
+                            <select id="address1" class="form-control">
                               <option selected>กรุณาเลือก</option>
                               <option>...</option>
                             </select>
                           </div>
                           <div class="form-group col-md-6">
-                            <label for="surveyName">แขวง</label>
-                            <select id="surveyName" class="form-control">
+                            <label for="address2">แขวง</label>
+                            <select id="address2" class="form-control">
                               <option selected>กรุณาเลือก</option>
                               <option>...</option>
                             </select>
                           </div>
                         </div>
+                        <!-- Provice -->
+                        <!-- <div class="form-row">
+                          <div class="form-group col-md-12">
+                            <label for="address3">จังหวัด</label>
+                            <select id="address3" class="form-control">
+                              <option selected>กรุณาเลือก</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                        </div> -->
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="gridCheck">ขนาดกริด</label>
@@ -465,7 +947,7 @@
               </div>
             </div>
 
-            <!-- Tab content - second -->
+            <!-- Tab content - second (Report Tab) -->
             <div class="container tab-pane fade full-height" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
               <!-- Table - Header -->
               <div class="header">
@@ -593,33 +1075,22 @@
       </div>
     </div>
 
-    <!-- Modal changpassword -->
-    <div class="modal fade" id="changepasswordModal" tabindex="-1" role="dialog" aria-labelledby="changpasswordTitle" aria-hidden="true">
+    <!-- Modal explored-info-cancel-modal -->
+    <div class="modal fade" id="explored-info-cancel-modal" tabindex="-1" role="dialog" aria-labelledby="explored-info-cancel-title" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="changpasswordLongTitle">เปลี่ยนรหัสผ่าน</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="explored-info-cancel-long-title">เรียกงานกลับ</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </button> -->
           </div>
           <div class="modal-body">
-            <form>
-              <div class="row">
-                <div class="form-group col-xs-12 col-sm-12 col-md-6">
-                    <label for="email" class="control-label">รหัสผ่านเดิม</label>
-                    <input type="password" class="form-control" id="oldpassword" placeholder="กรุณากรอก" value="">
-                </div>
-                <div class="form-group col-xs-12 col-sm-12 col-md-6">
-                    <label for="email" class="control-label">รหัสผ่านใหม่</label>
-                    <input type="password" class="form-control" id="newpassword" placeholder="กรุณากรอก" value="">
-                </div>
-              </div>
-            </form>
+            <p>คุณยืนยันที่จะเรียกงานกลับจาก “สมชาย  จิตอาสา ” ใช่หรือไม่</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">ยกเลิก</button>
-            <button type="button" class="btn btn-primary">ยืนยัน</button>
+            <button type="button" class="btn btn-dark" data-dismiss="modal">ยกเลิก</button>
+            <button type="button" class="btn btn-primary" id="explored-info-cancel-confirm-button" data-dismiss="modal">ใช่</button>
           </div>
         </div>
       </div>
