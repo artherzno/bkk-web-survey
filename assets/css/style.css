@@ -209,6 +209,13 @@ i.icon { display: inline-block; background-size: cover; }
 i.icon-setting { background-image: url('../images/ic_setting@2x.png'); }
 i.icon-land { background-image: url('../images/ic_land@2x.png'); }
 i.icon-building { background-image: url('../images/ic_building@2x.png'); }
+i.icon-map-type { background-image: url('../images/ic_map_maptype@2x.png'); }
+i.icon-map-type.active { background-image: url('../images/ic_map_maptype_active@2x.png'); }
+i.icon-map-grid{ background-image: url('../images/ic_map_map_grid@2x.png'); }
+i.icon-map-grid.active { background-image: url('../images/ic_map_grid_active@2x.png'); }
+i.icon-map-default { background-image: url('../images/ic_map_default@2x.png'); }
+i.icon-map-satellite { background-image: url('../images/ic_map_setellite@2x.png'); }
+i.icon-map-terrain { background-image: url('../images/ic_map_terrain@2x.png'); }
 
 /* ========= Survey Page ===========*/
 #map { height: 94.8vh; z-index: 1; position: relative; }
@@ -218,6 +225,7 @@ i.icon-building { background-image: url('../images/ic_building@2x.png'); }
 .map-control .layers-control .layers-control-button.nav-link { padding: 9px; border: 1px solid #eeeeee; background-color: #ffffff; box-shadow: 0 1px 4px #646464; }
 .map-control .layers-control .dropdown-item {  font-size: 12px; font-family: 'kanit'; font-weight: 400; color: #757575; }
 .map-control .layers-control .icon-setting { width: 20px; height: 20px; display: block; }
+.map-control .layers-control .layers-control-menu i.icon { width: 18px; height: 18px; vertical-align: bottom; margin-right: 10px; }
 .map-control .layers-control .layers-control-menu._first.show { transform: translate3d(-99px, -73px, 0px); top: 0px; left: 0px; will-change: transform; border-radius: 0; }
 .map-control .layers-control .layers-control-menu._second.show { transform: translate3d(-145px, -3px, 0px); top: 0px; left: 0px; will-change: transform; border-radius: 0; }
 
