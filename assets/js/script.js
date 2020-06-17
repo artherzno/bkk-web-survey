@@ -174,6 +174,7 @@ $(function() {
   var idSecondPill2 = 'nodata';
   $('#pills-second .dropdown-button[data-button="first"]').on('click', function(){
     $('._second').removeClass('active show');
+
     idSecondPill2 = 'nodata';
 
     if(!buttonFirstPill2) {
@@ -190,6 +191,9 @@ $(function() {
     $(this).addClass('active');
 
     var clickIDPill2 = $(this).attr('data-name');
+    // console.log(clickIDPill2);
+    $('.table-responsive').removeClass('active');
+    $('#'+clickIDPill2+'-table').addClass('active');
 
     if(idSecondPill2 == clickIDPill2) {
       $('._second').removeClass('active show');
