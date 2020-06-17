@@ -108,6 +108,9 @@ input.form-control { border-radius: 0; border: 1px solid #dadada; }
 .header h1 { font-family: 'thonburi-Bold'; }
 .container { padding: 30px 20px; }
 
+.card-title { font-size: 18px; font-family: 'thonburi'; font-weight: bold; text-align: center; }
+.card-title span { font-size: 14px; font-family: 'thonburi'; font-weight: normal; color: #757575; }
+
 .pagination { /*box-shadow: 0 1px 5px 0 rgba(0,0,0,0.35); float: left;*/ border-radius: 2px;  margin-top: 10px; }
 .pagination .page-item { border: 1px solid #dee2e6; border-left: none; border-right: none; min-width: 28px; text-align: center; }
 .pagination .page-item .page-link { font-size: 12px; color: #4a4a4a; padding: .5rem; vertical-align: middle; border-top: none; border-bottom: none; }
@@ -143,8 +146,8 @@ textarea.form-control { border-radius: 0; border: 1px solid #e0e0e0; padding: 4p
 .modal .modal-footer { justify-content: center; }
 .modal .modal-footer .btn { min-width: 150px; }
 
-.tab-content { position: absolute; z-index: 2; }
-.tab-content .container { background-color: #ffffff; max-width: none; width: 94vw; height: 100%; padding: 40px; }
+.tab-content { position: absolute; z-index: 2; width: 100%; }
+.tab-content .container { background-color: #ffffff; max-width: none; height: 100%; padding: 40px; }
 
 /* Custom Radio Box */
 .radio-button { display: block;  position: relative; padding-right: 25px; margin-bottom: 0; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
@@ -162,6 +165,11 @@ textarea.form-control { border-radius: 0; border: 1px solid #e0e0e0; padding: 4p
 .radio-button input:checked ~ .checkmark:after { display: block; }
 /* Style the indicator (dot/circle) */
 .radio-button .checkmark:after { top: 4px; left: 4px; width: 8px; height: 8px; 	border-radius: 50%; background: white; }
+
+
+/* ========= Chart JS ===========*/
+canvas.chartjs { margin-bottom: 10px; }
+
 
 /* ========= Login Page ===========*/
 #login-page { background: #299650 url('../images/bg_login@2x.png') no-repeat center; background-size: cover; width: 100%; height: 100%; position: relative; }
@@ -271,6 +279,21 @@ textarea.form-control { border-radius: 0; border: 1px solid #e0e0e0; padding: 4p
 .surveying { color: #63be00; }
 .explored { color: #4A90E2; }
 .not-explored { color: #d31228; }
+
+/* ========= Survey Page ===========*/
+#check-page { overflow: hidden ; width: 100%; height: 100%; }
+#check-page h3 { font-family: 'thonburi'; font-size: 22px; font-weight: bold; }
+#check-page .row { margin-bottom: 10px; }
+#check-pills-tabContent .tab-pane { overflow: auto;  }
+.info-col .result-table .result-table-head .table-active th { color: #ffffff; font-size: 14px; font-weight: normal; padding: 4px; }
+.info-col .result-table .result-table-body { height: 100px; overflow-y: auto; }
+.info-col .result-table .result-table-body tbody tr td:first-child { text-align: left; }
+.info-col .result-table table thead tr th,
+.info-col .result-table table tbody tr td { min-width: 0; }
+#card-status h5.card-title { margin: 0; }
+#card-map .card-body { padding: 0; }
+#cardmap { height: 100vh; z-index: 1; position: relative; }
+.chartjs { max-height: 160px; }
 
 /* ========= Icon ==================*/
 i.icon { display: inline-block; background-size: cover; }

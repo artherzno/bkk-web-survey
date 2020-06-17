@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Bangkok Web Survey</title>
+    <link rel="shortcut icon" type="image/png" href="assets/images/ico_16px.png">
+    <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <!-- s -->
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <div id="check-page">
+      <div class="nav nav-top">
+        <a class="navbar-brand" href="#">
+          <img src="assets/images/header_logo@2x.png" alt="Bangkok Web Admin" class="logo">
+        </a>
+
+        <div class="nav-item dropdown ml-auto">
+          <div class="nav-profile">
+            <b>Administrator</b>
+            <p>โหมดผู้ใช้งาน</p>
+          </div>
+
+          <a class="nav-link navbar-toggler dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="icon-bar top-bar"></span>
+          	<span class="icon-bar middle-bar"></span>
+          	<span class="icon-bar bottom-bar"></span>
+          </a>
+          <div class="dropdown-menu ml-auto">
+            <ul class="nav nav-left nav-pills" id="pills-navleft-tab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link" href="survey.html" ><ion-icon name="clipboard-sharp"></ion-icon> ระบบจ่ายงาน</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="check.html" ><ion-icon name="checkmark-done-sharp"></ion-icon> ระบบตรวจสอบและติดตาม</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html" ><ion-icon name="log-out-outline"></ion-icon> ออกจากระบบ</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column Left -->
+      <div class="col-left">
+        <ul class="nav nav-left nav-pills" id="pills-navleft-tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active">
+            <!-- <a class="nav-link active" id="pills-first-tab" data-toggle="pill" href="#check-pills-first" role="tab" aria-controls="check-pills-first" aria-selected="true" disabled> -->
+              <ion-icon name="checkmark-done-sharp"></ion-icon> ระบบตรวจสอบและติดตาม
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column Right -->
+      <div class="col-right">
+        <div class="tab-content" id="check-pills-tabContent">
+
+            <!-- Tab content - first (Search Tab) -->
+            <div class="container tab-pane fade full-height active show" id="check-pills-first" role="tabpanel" aria-labelledby="check-pills-first-tab">
+              <h3>ระบบตรวจสอบและติดตาม</h3>
+              <div class="row">
+                <!-- Search Column-->
+                <div class="seach-col col-3 col-xs-12">
+                  <div class="card">
+                    <h5 class="card-header">ค้นหา</h5>
+                    <div class="card-body">
+                      <div class="search-form">
+                        <form>
+                          <div class="form-group">
+                            <label for="keyword">ค้นหาด้วยคำสำคัญ</label>
+                            <input type="text" class="form-control" id="keyword" placeholder="กรุณากรอกคำที่ต้องการค้นหา">
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="document-num-1">เลขที่โฉนด</label>
+                              <input type="text" class="form-control" id="document-num-1" name="document-num-1" placeholder="กรุณากรอกเลขที่โฉนด">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="document-num-2">เลขที่ดิน</label>
+                              <input type="text" class="form-control" id="document-num-2" name="document-num-2" placeholder="กรุณากรอกเลขที่ดิน">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-12">
+                              <label for="build-name">ชื่ออาคารชุด</label>
+                              <input type="text" class="form-control" id="build-name" name="build-name" placeholder="กรุณากรอกเลขที่ดิน">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="build-type-1">ประเภทอาคารชุด</label>
+                              <select id="build-type-1" class="form-control">
+                                <option selected>กรุณาเลือก</option>
+                                <option>...</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="build-type-2">ประเภทสิ่งปลูกสร้าง</label>
+                              <select id="build-type-2" class="form-control">
+                                <option selected>กรุณาเลือก</option>
+                                <option>...</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="address1">เขต</label>
+                              <select id="address1" class="form-control">
+                                <option selected>กรุณาเลือก</option>
+                                <option>...</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="address2">แขวง</label>
+                              <select id="address2" class="form-control">
+                                <option selected>กรุณาเลือก</option>
+                                <option>...</option>
+                              </select>
+                            </div>
+                          </div>
+                          <!-- Provice -->
+                          <!-- <div class="form-row">
+                            <div class="form-group col-md-12">
+                              <label for="address3">จังหวัด</label>
+                              <select id="address3" class="form-control">
+                                <option selected>กรุณาเลือก</option>
+                                <option>...</option>
+                              </select>
+                            </div>
+                          </div> -->
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="gridCheck">ขนาดกริด</label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                <label class="form-check-label" for="gridCheck">
+                                  1 : 50,000
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="gridCheck">&nbsp;</label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck2">
+                                <label class="form-check-label" for="gridCheck">
+                                  1 : 40,000
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck3">
+                                <label class="form-check-label" for="gridCheck">
+                                  1 : 1,000
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="button" class="btn btn-primary btn-lg btn-block">ค้นหา</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Info Column -->
+                <div class="info-col col-9 col-xs-12">
+                  <div class="row">
+                    <div class="col-4 col-xs-12">
+                      <div class="card">
+                        <h5 class="card-header">ที่ดิน</h5>
+                        <div class="card-body">
+                          <canvas id="landChart" class="chartjs"></canvas>
+                          <h5 class="card-title">กรุงเทพมหานคร <span>มีจำนวนข้อมูลทั้งหมด : 39</span></h5>
+                          <div class="result-table">
+                            <div class="result-table-head">
+                              <table class="table">
+                                <thead>
+                                  <tr class="table-active">
+                                    <th>ประเภทปัญหา</th>
+                                    <th>จำนวน</th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                            <div class="result-table-body">
+                              <table class="table">
+                                <tbody>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4 col-xs-12">
+                      <div class="card">
+                        <h5 class="card-header">สิ่งปลูกสร้าง</h5>
+                        <div class="card-body">
+                          <canvas id="buildChart" class="chartjs"></canvas>
+                          <h5 class="card-title">กรุงเทพมหานคร <span>มีจำนวนข้อมูลทั้งหมด : 41</span></h5>
+                          <div class="result-table">
+                            <div class="result-table-head">
+                              <table class="table">
+                                <thead>
+                                  <tr class="table-active">
+                                    <th>ประเภทปัญหา</th>
+                                    <th>จำนวน</th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                            <div class="result-table-body">
+                              <table class="table">
+                                <tbody>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4 col-xs-12">
+                      <div class="card">
+                        <h5 class="card-header">อาคารชุด</h5>
+                        <div class="card-body">
+                          <canvas id="condoChart" class="chartjs"></canvas>
+                          <h5 class="card-title">กรุงเทพมหานคร <span>มีจำนวนข้อมูลทั้งหมด : 34</span></h5>
+                          <div class="result-table">
+                            <div class="result-table-head">
+                              <table class="table">
+                                <thead>
+                                  <tr class="table-active">
+                                    <th>ประเภทปัญหา</th>
+                                    <th>จำนวน</th>
+                                  </tr>
+                                </thead>
+                              </table>
+                            </div>
+                            <div class="result-table-body">
+                              <table class="table">
+                                <tbody>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่สามารถเข้าพื้นที่ได้</td>
+                                    <td>8</td>
+                                  </tr>
+                                  <tr>
+                                    <td>ไม่พบข้อมูล</td>
+                                    <td>10</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เอกสารไม่ครบ</td>
+                                    <td>7</td>
+                                  </tr>
+                                  <tr>
+                                    <td>เกินระยะเวลาตรวจสอบ</td>
+                                    <td>2</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 col-xs-12">
+                      <div class="card" id="card-status">
+                        <h5 class="card-header">สถานะการทำงาน</h5>
+                        <div class="card-body">
+                          <form>
+                            <div class="form-group row">
+                              <label for="staticEmail" class="col-sm-2 col-form-label">ทีม</label>
+                              <div class="col-sm-10">
+                                <select id="company" class="form-control">
+                                  <option>กรุณาเลือก</option>
+                                  <option selected>ทีม A</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="inputPassword" class="col-sm-2 col-form-label">เจ้าหน้าที่</label>
+                              <div class="col-sm-10">
+                                <select id="surveyName" class="form-control">
+                                  <option>กรุณาเลือก</option>
+                                  <option selected>เจ้าหน้าที่101</option>
+                                </select>
+                              </div>
+                            </div>
+                          </form>
+                          <canvas id="statusChart" class="chartjs"></canvas>
+                          <h5 class="card-title">สำรวจเฉลี่ย 0.5 แปลง ต่อ วัน</span></h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-xs-12">
+                      <div class="card" id="card-map">
+                        <h5 class="card-header">แผนที่</h5>
+                        <div class="card-body">
+                          <div id="cardmap"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <!-- /* Leaflet Map ********************************/ -->
+    <script>
+    	var cities = L.layerGroup();
+
+    	L.marker([39.61, -105.02]).bindPopup('This is Littleton, CO.').addTo(cities),
+    	L.marker([39.74, -104.99]).bindPopup('This is Denver, CO.').addTo(cities),
+    	L.marker([39.73, -104.8]).bindPopup('This is Aurora, CO.').addTo(cities),
+    	L.marker([39.77, -105.23]).bindPopup('This is Golden, CO.').addTo(cities);
+
+
+    	var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    		mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+
+    	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox/light-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr}),
+    		streets  = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+
+    	var cardmap = L.map('cardmap', {
+    		center: [13.982227, 100.550900],
+    		zoom: 6,
+    		layers: [grayscale, cities]
+    	});
+
+    	var baseLayers = {
+    		"Grayscale": grayscale,
+    		"Streets": streets
+    	};
+
+    	var overlays = {
+    		"Cities": cities
+    	};
+
+    	L.control.layers(baseLayers).addTo(cardmap);
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script src="assets/js/chart-data.js"></script>
+  </body>
+</html>

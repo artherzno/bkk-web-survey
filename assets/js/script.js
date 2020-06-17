@@ -253,6 +253,16 @@ $(function() {
 
   checkHeight();
 
+  function checkCardMapHeight () {
+    var chartH = $('#card-status .card-body').height();
+    console.log(chartH);
+
+    $('#card-map .card-body, #card-map #cardmap').css({
+      height: chartH + 35
+    });
+  }
+
+  checkCardMapHeight();
 
   // Check checkMapWidth ///////////////////////
   function checkColRightWidth () {
@@ -270,6 +280,8 @@ $(function() {
   // Window Resize /////////////////////////////
   $( window ).resize(function() {
     checkHeight();
+    checkCardMapHeight();
+    checkColRightWidth();
 
     var searchForm = $('#search-form');
     (searchForm.hasClass('show')) ? checkHeightResultLeftside() : checkHeightResultLeftsideFull();
