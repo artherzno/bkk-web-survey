@@ -169,6 +169,45 @@ $(function() {
     $('.map-control').animate({width: colRightH},100);
   });
 
+  // layers Control Button /////////////////////
+  var buttonFirstPill2 = false;
+  var idSecondPill2 = 'nodata';
+  $('#pills-second .dropdown-button[data-button="first"]').on('click', function(){
+    $('._second').removeClass('active show');
+    idSecondPill2 = 'nodata';
+
+    if(!buttonFirstPill2) {
+      $('._first').addClass('active show');
+      buttonFirstPill2 = true;
+    } else {
+      $('._first').removeClass('active show');
+      buttonFirstPill2 = false;
+    }
+  });
+
+  $('#pills-second .dropdown-button[data-button="second"]').on('click', function(){
+    $('._first a.dropdown-button').removeClass('active');
+    $(this).addClass('active');
+
+    var clickIDPill2 = $(this).attr('data-name');
+
+    if(idSecondPill2 == clickIDPill2) {
+      $('._second').removeClass('active show');
+      idSecondPill2 = 'nodata';
+    } else {
+      $('._second').removeClass('active show');
+      $('#'+clickIDPill2).addClass('active show');
+      idSecondPill2 = clickIDPill2;
+    }
+  });
+
+  $('#pills-second ._second a').on('click', function() {
+    $('._first a.dropdown-button').removeClass('active');
+    $('._first, ._second').removeClass('active show');
+    idSecondPill2 = 'nodata';
+    buttonFirstPill2 = false;
+  });
+
 
   // layers Control Button /////////////////////
   var buttonFirst = false;

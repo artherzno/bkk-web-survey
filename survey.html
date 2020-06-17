@@ -951,16 +951,64 @@
             <div class="container tab-pane fade full-height" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
               <!-- Table - Header -->
               <div class="header">
-                <h3>จัดการกลุ่ม</h3>
-                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addGroupModal">
-                  <ion-icon name="add-sharp"></ion-icon> เพิ่มกลุ่ม
-                </button>
+                <h3>รายงานการสำรวจที่ดิน สิ่งปลูกสร้าง และการใช้ประโยชน์ที่ดิน</h3>
+                <div class="form-group col-md-2">
+                  <select id="address4" class="form-control">
+                    <option selected>กรุณาเลือกเขต</option>
+                    <option>...</option>
+                  </select>
+                </div>
+                <div class="form-group dropdown col-md-2">
+                  <a class="btn dropdown-button nav-link" data-button="first" href="#" role="button" >
+                    กรุณาเลือกประเภทรายการ
+                  </a>
+                  <div class="dropdown-menu _first dropdown-menu">
+                    <a class="dropdown-button dropdown-item" data-button="second" data-name="address-list" href="#" role="button">เจ้าหน้าที่สำรวจ (แขวงประเวศ)</a>
+                    <div class="dropdown-menu _second dropdown-menu" id="address-list">
+                      <span>กรุณาเลือกแขวง</span>
+                      <a class="dropdown-item dropdown-item" href="#">เลือกทั้งหมด</a>
+                      <a class="dropdown-item dropdown-item" href="#">แขวงประเวศ</a>
+                      <a class="dropdown-item dropdown-item" href="#">แขวงหนองบอน</a>
+                      <a class="dropdown-item dropdown-item" href="#">แขวงดอกไม้</a>
+                    </div>
+                    <a class="dropdown-button dropdown-item" data-button="second" data-name="grid-list" href="#" role="button">กริดสำรวจ (1 : 50,000)</a>
+                    <div class="dropdown-menu _second dropdown-menu" id="grid-list">
+                      <span>กรุณาเลือกขนาดกริด</span>
+                      <a class="dropdown-item dropdown-item" href="#">1 : 50,000</a>
+                      <a class="dropdown-item dropdown-item" href="#">1 : 4,000</a>
+                      <a class="dropdown-item dropdown-item" href="#">1 : 1,000</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="form-group dropdown col-md-2">
+                  <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    กรุณาเลือกประเภทรายการ
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">เจ้าหน้าที่สำรวจ (แขวงประเวศ)</button>
+                    <div class="dropdown-menu sub-dropdown" aria-labelledby="dropdownMenu2">
+                      <span>กรุณาเลือกแขวง</span>
+                      <button class="dropdown-item" type="button">เลือกทั้งหมด</button>
+                      <button class="dropdown-item" type="button">แขวงประเวศ</button>
+                      <button class="dropdown-item" type="button">แขวงหนองบอน</button>
+                      <button class="dropdown-item" type="button">แขวงดอกไม้</button>
+                    </div>
+                    <button class="dropdown-item" type="button">กริดสำรวจ (1 : 50,000)</button>
+                    <div class="dropdown-menu sub-dropdown" aria-labelledby="dropdownMenu2">
+                      <span>กรุณาเลือกขนาดกริด</span>
+                      <button class="dropdown-item" type="button">1 : 50,000</button>
+                      <button class="dropdown-item" type="button">1 : 4,000</button>
+                      <button class="dropdown-item" type="button">1 : 1,000</button>
+                    </div>
+                  </div>
+                </div> -->
               </div>
               <!-- Table -->
               <div class="table-responsive">
                 <!-- Table Nav -->
                 <div class="table-nav navbar navbar-expand-lg navbar-light">
-                  <h5>รายการกลุ่ม</h5>
+                  <h5>รายการผู้สำรวจ</h5>&nbsp;
+                  <span>(100 รายการ)</span>
                   <div class="table-nav-search">
                     <form class="form-inline my-2 my-lg-0">
                       <ion-icon name="search-sharp"></ion-icon>
@@ -970,7 +1018,7 @@
                 </div>
 
                 <!-- Table Group -->
-                <div class="" style="width: 100%; overflow: scroll;">
+                <div class=list-table"">
                   <table class="table table-inverse|reflow|striped|bordered|hover|sm">
                     <thead>
                       <tr>
