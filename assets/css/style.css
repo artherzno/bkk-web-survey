@@ -68,7 +68,7 @@ a.btn { line-height: 1.8; }
 .container .table-nav .table-nav-filter select { width: auto; min-width: 46px; }
 .container .table-nav .table-nav-search { float: right; width: 22%; }
 .container .table-nav .table-nav-search .form-inline { border: 1px solid #e0e0e0; padding: 0 10px; }
-.container .table-nav ion-icon { float: right; color: #c6c9cd; font-size: 20px; }
+.container .table-nav ion-icon { float: right; color: #c6c9cd; font-size: 1rem; }
 .container .table-nav .table-nav-search .form-control { border: none; float: right; font-size: 13px; width: 90%; }
 .container .table thead tr { background-color: #E1EDFB; }
 .container .table thead tr th { color: #232E39; border: none; }
@@ -190,6 +190,7 @@ canvas.chartjs { margin-bottom: 10px; }
 
 /* ========= Survey Page ===========*/
 #survey-page { overflow: hidden ; width: 100%; height: 100%; }
+#pills-second { overflow: auto; }
 #pills-second .form-group { float: right; padding-right: 0; }
 #pills-second .header .dropdown .btn { box-shadow: none; border: 1px solid #e0e0e0; margin: 0; font-size: 12px; padding: 4px 10px; }
 #pills-second .sub-dropdown { display: none; }
