@@ -269,7 +269,7 @@ $(function() {
     var winW = window.innerWidth;
     var colLeftW = $('.col-left').width();
 
-    $('.col-right').css({
+    $('.col-right, .map-control').css({
       width: winW - colLeftW
     });
   }
