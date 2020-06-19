@@ -32,9 +32,16 @@ $(function() {
 
 
   // Tab Button ////////////////////////////////
-  $('.nav-pills .nav-link').on('click', function(event){
+  $('.nav-pills.nav-left .nav-link').on('click', function(event){
     var idTab = $(this).attr('id');
     var idTabContent = idTab.replace('-tab','');
+
+    console.log(idTab);
+        if(idTab == 'pills-second-tab') {
+          $('#pills-tabContent').addClass('zIndex5');
+        } else {
+          $('#pills-tabContent').removeClass('zIndex5');
+        }
 
     $('.tab-pane').removeAttr('style');
 
