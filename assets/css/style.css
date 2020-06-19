@@ -147,7 +147,7 @@ textarea.form-control { border-radius: 0; border: 1px solid #e0e0e0; padding: 4p
 .modal .modal-footer { justify-content: center; }
 .modal .modal-footer .btn { min-width: 150px; }
 
-.tab-content { position: absolute; z-index: 2; width: 100%; }
+.tab-content { position: absolute; z-index: 5; width: 100%; }
 .tab-content .container { background-color: #ffffff; max-width: none; height: 100%; padding: 40px; }
 
 /* Custom Radio Box */
@@ -247,8 +247,8 @@ canvas.chartjs { margin-bottom: 10px; }
 .right-side .result-box #explorer-tab table thead tr th,
 .right-side .result-box #explorer-tab table tbody tr td { text-align: left; }
 
-.right-sub-side { top: 50px; right: -290px; overflow: hidden; z-index: 3; transition: right 0.4s linear 0.1s; }
-.right-sub-side.active { right: 290px; }
+.right-sub-side { top: 50px; right: -290px; overflow: hidden; z-index: 3; opacity: 0; transition: right 0.4s linear 0.1s, opacity 0.2s linear; }
+.right-sub-side.active { right: 290px; opacity: 1; }
 .right-sub-side .result-box { position: relative; height: 100%; }
 .right-sub-side .result-box h3 { font-size: 16px; display: inline-block; font-family: Thonburi-Bold; font-size: 16px; color: #2486EC; text-align: left; margin: 0; }
 .right-sub-side .result-box .result-header { padding-top: 40px; height: 40px; }

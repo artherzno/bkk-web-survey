@@ -44,6 +44,7 @@ $(function() {
           $('#'+idTab).removeClass('active').attr('aria-selected', 'false');
           $('#'+idTabContent).fadeOut('100').removeClass('show');
           $('.right-side').removeClass('active');
+          $('.right-sub-side').removeClass('active');
           $('.map-control').animate({width: $('.col-right').width()},100);
           // $('#pills-zero-tab').trigger('click');
         },1
