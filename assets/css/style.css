@@ -364,40 +364,41 @@ i.icon-map-terrain { background-image: url('../images/ic_map_terrain@2x.png'); }
 
     .container .table-nav .form-control { width: 84%; }
     .container .table-responsive .table-pagination .pagination { float: left; }
+
+    .left-side .search-box .search-form .form-group { margin-bottom: 0 ;}
+    .left-side .search-box .search-form { padding-top: 0; }
 }
 
 @media (max-width: 575.98px) {
   #login-page .login-box { width: 100%; }
 
+  .nav .navbar-brand { width: 32px; overflow: hidden; }
   .nav .navbar-brand .logo { width: 206px; height: auto; }
 
-  .col-left { width: 100% !important; height: auto; max-width: inherit; padding: 0; margin: 50px 0 0; }
+  .col-left { width: 100% !important; height: 42px; max-width: inherit; padding: 0; margin: 50px 0 0; }
   .col-left .nav.nav-left .nav-item .nav-link { padding: 10px 0; min-height: inherit; }
   .nav.nav-left .nav-item{ width: 50%; }
   .nav.nav-left .nav-item .nav-link ion-icon { display: inline-block; margin: 0 5px 0 0; vertical-align: middle; }
   .col-right { width: 100% !important; height: auto; padding: 0; }
-  .map-control, #map { width: 100% !important; height: 87.5vh !important; }
+  .map-control, #map { width: 100% !important; /*height: 87.5vh !important;*/ }
 
-  .right-side, .right-sub-side, .left-side { top: 0; height: 88vh !important;  }
+  .right-side, .right-sub-side, .left-side { top: 0; /*height: 88vh !important;*/  }
   .right-sub-side.active { z-index: 4; right: 0;}
 
   .tab-content .container { padding: 20px; }
 
   .result-table-body { padding-bottom: 20px; }
+
+  .search-form #grid-non { display: none; }
+
+  .result-table table thead tr th, .result-table table tbody tr td { padding: .25rem; }
+  .right-sub-side .result-box .result-table table tbody tr td .radio-button { padding: .5rem; }
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 375.98px) {
   .nav .navbar-brand { margin: 6px 0; }
   .nav .nav-item .nav-profile { padding: 4px 18px; }
-
-  .left-side .search-box .search-form .form-group { margin-bottom: 0 ;}
-  .left-side .search-box .search-form { padding-top: 0; }
-
-  .search-form #grid-non { display: none; }
-
-  .result-table table thead tr th, .result-table table tbody tr td { padding: .25rem; }
-  .right-sub-side .result-box .result-table table tbody tr td .radio-button { padding: .5rem; }
 
   .info-col .row > div { margin-top: 10px; }
 }
@@ -412,9 +413,8 @@ i.icon-map-terrain { background-image: url('../images/ic_map_terrain@2x.png'); }
   .modal .modal-body .nav.nav-pills .nav-item .nav-link { font-size: 12px; padding: 1rem; }
   .modal .modal-footer .btn { min-width: 120px; }
 
-  .nav .navbar-brand { width: 32px; overflow: hidden; }
-  .right-side, .right-sub-side, .left-side { height: 84vh !important; }
-  .map-control, #map { height: 84vh !important; }
+  /* .right-side, .right-sub-side, .left-side { height: 84vh !important; }
+  .map-control, #map { height: 84vh !important; } */
 
   #pills-second .dropdown-menu._second { min-width: 20px; max-width: 160px; }
   #pills-second .dropdown-menu._second span { display: block; }

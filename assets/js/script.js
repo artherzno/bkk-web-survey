@@ -36,12 +36,12 @@ $(function() {
     var idTab = $(this).attr('id');
     var idTabContent = idTab.replace('-tab','');
 
-    console.log(idTab);
-        if(idTab == 'pills-second-tab') {
-          $('#pills-tabContent').addClass('zIndex5');
-        } else {
-          $('#pills-tabContent').removeClass('zIndex5');
-        }
+    // console.log(idTab);
+    if(idTab == 'pills-second-tab') {
+      $('#pills-tabContent').addClass('zIndex5');
+    } else {
+      $('#pills-tabContent').removeClass('zIndex5');
+    }
 
     $('.tab-pane').removeAttr('style');
 
@@ -79,7 +79,12 @@ $(function() {
         searchResultH = leftSideH - (searchHeaderH + searchFormH + 190);
         // console.log(leftSideH+' , '+searchHeaderH+' , '+searchFormH+' , '+searchResultH);
 
-    $('.left-side .result-table-body').animate({height: searchResultH}, 50);
+
+    if($(window).width() <= 575) {
+      $('.left-side .result-table-body').animate({height: searchResultH - 42}, 50);
+    } else {
+      $('.left-side .result-table-body').animate({height: searchResultH}, 50);
+    }
   }
 
   function checkHeightResultLeftsideFull () {
@@ -88,7 +93,12 @@ $(function() {
         searchResultH = leftSideH - (searchHeaderH + 150);
         // console.log('left full');
 
-    $('.left-side .result-table-body').animate({ height: searchResultH}, 50);
+
+    if($(window).width() <= 575) {
+      $('.left-side .result-table-body').animate({ height: searchResultH - 42}, 50);
+    } else {
+      $('.left-side .result-table-body').animate({ height: searchResultH}, 50);
+    }
   }
 
 
@@ -105,7 +115,12 @@ $(function() {
         // console.log(leftSideH+' , '+headerH+' , '+detailH+' , '+resultH);
         // console.log('right full')
 
-    $('.right-side #report-tab .result-table-body').animate({height: resultH}, 50);
+    if($(window).width() <= 575) {
+      $('.right-side #report-tab .result-table-body').animate({height: resultH - 42}, 50);
+    } else {
+      $('.right-side #report-tab .result-table-body').animate({height: resultH}, 50);
+    }
+
   }
 
   function checkHeightResultRightsideFullExplorer () {
@@ -117,7 +132,12 @@ $(function() {
         // console.log(leftSideH+' , '+headerH+' , '+detailH+' , '+resultH);
         // console.log('right explorer full');
 
-    $('.right-side #explorer-tab .result-table-body').animate({height: resultH}, 50);
+
+    if($(window).width() <= 575) {
+      $('.right-side #explorer-tab .result-table-body').animate({height: resultH - 42}, 50);
+    } else {
+      $('.right-side #explorer-tab .result-table-body').animate({height: resultH}, 50);
+    }
   }
 
   function checkHeightResultRightSubsideFull () {
@@ -127,7 +147,12 @@ $(function() {
         // console.log(leftSideH+' , '+headerH+' , '+detailH+' , '+resultH);
         // console.log('right explorer full');
 
-    $('.right-sub-side .result-table-body').animate({height: resultH}, 50);
+
+    if($(window).width() <= 575) {
+      $('.right-sub-side .result-table-body').animate({height: resultH - 42}, 50);
+    } else {
+      $('.right-sub-side .result-table-body').animate({height: resultH}, 50);
+    }
   }
 
 
@@ -254,16 +279,25 @@ $(function() {
   // Check checkMapHeight //////////////////////
   function checkHeight () {
     var winH = window.innerHeight;
-    $('#map, .full-height').css({
-      height: winH - 50
-    });
+
+
+    if($(window).width() <= 575) {
+      // console.log($(window).width());
+      $('#map, .full-height').css({
+        height: winH - 92
+      });
+    } else {
+      $('#map, .full-height').css({
+        height: winH - 50
+      });
+    }
   };
 
   checkHeight();
 
   function checkCardMapHeight () {
     var chartH = $('#card-status .card-body').height();
-    console.log(chartH);
+    // console.log(chartH);
 
     $('#card-map .card-body, #card-map #cardmap').css({
       height: chartH + 35
